@@ -4,6 +4,8 @@ import com.erickmendes.workshop_mongodb.domain.Post;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PostDTO implements Serializable {
 
@@ -12,6 +14,8 @@ public class PostDTO implements Serializable {
     private String title;
     private String body;
     private AuthorDTO author;
+
+    private List<CommentDTO> comments = new ArrayList<>();
 
     public PostDTO(){
 
@@ -23,7 +27,7 @@ public class PostDTO implements Serializable {
         title = obj.getTitle();
         body = obj.getBody();
         author = obj.getAuthor();
-
+        comments = obj.getComments();
     }
 
     public String getId() {
@@ -64,5 +68,13 @@ public class PostDTO implements Serializable {
 
     public void setAuthor(AuthorDTO author) {
         this.author = author;
+    }
+
+    public List<CommentDTO> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<CommentDTO> comments) {
+        this.comments = comments;
     }
 }
